@@ -1,9 +1,9 @@
-Flask Tracking
+Site Visit Tracking
 ==============
 
 An example a single module (Monolithic) Flask application.  
 
-This application tracks visit to a particular web site.
+This application tracks visit to a particular web site register with this application.
 
 Used 2 tables to track visits of a given site
 
@@ -22,6 +22,8 @@ Used 2 tables to track visits of a given site
   * site_id (links back to `tracking_site`)
 
 Used
+==============
+
 * Flask
 * WTF forms
 * SQLite DB with SQLAlchemy as ORM
