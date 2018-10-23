@@ -5,6 +5,19 @@ An example a single module (Monolithic) Flask application.
 
 This application tracks visit to a particular web site register with this application.
 
+├── flask-tracking.db
+├── requirements.txt
+├── templates
+│   ├── data_list.html
+│   ├── helpers
+│   │   ├── forms.html
+│   │   └── tables.html
+│   ├── index.html
+│   ├── layout.html
+│   └── validation_error.html
+└── tracking.py
+
+
 Used 2 tables to track visits of a given site
 
 * tracking_site
