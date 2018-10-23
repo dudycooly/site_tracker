@@ -1,7 +1,7 @@
 Site Visit Tracking
 ==============
 
-An example a single module (Monolithic) Flask application.  
+An example a single module (Monolithic) Flask application. It is Monolithic, because all elements of MVC design pattern (Model, Views and Controller) are in single file 
 
 This application tracks visit to a particular web site register with this application.
 
