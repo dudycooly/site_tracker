@@ -41,19 +41,19 @@ app-name/       # Our working root
 
 Separting models, forms, and views modules from one single file to hold our domain models, our data translation layer, and our view code respectively to get the final form like this
 
-
 ```    
-├── README.md
-├── config.py
-├── flask-tracking.db
-├── requirements.txt
-├── run.py
-└── tracking
-    ├── __init__.py # General application setup
-    ├── forms.py    # User data to domain data mappers and validators
-    ├── models.py   # Domain models used to define DB
-    ├── templates   # Holds html Jinja templates
-    └── views.py    # route/end point configuration or controlllers
+├──tracking
+   ├── flask-tracking.db
+   ├── requirements.txt
+   ├── README.md
+   ├── config.py
+   ├── run.py
+   └── tracking
+       ├── __init__.py # General application setup
+       ├── forms.py    # User data to domain data mappers and validators
+       ├── models.py   # Domain models used to define DB
+       ├── templates/  # Holds html Jinja templates
+       └── views.py    # route/end point configuration or controlllers
 ```
 
 from 
@@ -61,14 +61,7 @@ from
 ```
 ├── flask-tracking.db
 ├── requirements.txt
-├── templates
-│   ├── data_list.html
-│   ├── helpers
-│   │   ├── forms.html
-│   │   └── tables.html
-│   ├── index.html
-│   ├── layout.html
-│   └── validation_error.html
+├── templates/
 └── tracking.py
 ```
 
