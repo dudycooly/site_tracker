@@ -3,7 +3,8 @@ Flask Tracking
 
 An example a single module (Monolithic) Flask application.  
 
-This application tracks visit to a particular site. 
+This application tracks visit to a particular web site.
+
 Used 2 tables to track visits of a given site
 
 * tracking_site
