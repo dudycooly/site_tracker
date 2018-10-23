@@ -26,6 +26,8 @@ Used
 * SQLite DB with SQLAlchemy as ORM
 
 
+Updates in this branch
+==============
 
 In this branch, monolithic version of the app (checkout branch monolithic) is improved by fixing dir structure as recommended by Flask
 
