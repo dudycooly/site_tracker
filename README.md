@@ -5,6 +5,7 @@ An example a single module (Monolithic) Flask application.
 
 This application tracks visit to a particular web site register with this application.
 
+```
 ├── flask-tracking.db
 ├── requirements.txt
 ├── templates
@@ -16,7 +17,7 @@ This application tracks visit to a particular web site register with this applic
 │   ├── layout.html
 │   └── validation_error.html
 └── tracking.py
-
+```
 
 Used 2 tables to track visits of a given site
 
