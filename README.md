@@ -1,4 +1,4 @@
-Site Visit Tracking
+Site Visit Tracking App
 ==============
 This application tracks visits to a particular web site register with this application.
 
