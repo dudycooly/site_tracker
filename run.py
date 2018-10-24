@@ -1,4 +1,4 @@
-from tracking import app, db
+from site_tracker import app, db
 
 if __name__ == "__main__":
     app.debug = True
