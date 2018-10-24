@@ -17,9 +17,10 @@ Concetps Explored
 * Web Application (Unauthenticated Session)
   * Using Flask Forms and Jinja templates
   * Design Patterns: 
-     MVC
-     DAO
-     Mixins (CRUDMixmin, Flask UserMixin)
+     * Blueprint
+     * MVC
+     * DAO
+     * Mixins (CRUDMixmin, Flask UserMixin)
 * User Session Management
 * Salted/Hased password using backports.pbkdf2 HMAC
 * password property
