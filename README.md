@@ -42,13 +42,13 @@ app-name/       # Our working root
 Separting models, forms, and views modules from one single file to hold our domain models, our data translation layer, and our view code respectively to get the final form like this
 
 ```    
-├──tracking
-   ├── flask-tracking.db
+├──site_tracker
+   ├── site_tracker.db
    ├── requirements.txt
    ├── README.md
    ├── config.py
    ├── run.py
-   └── tracking
+   └── site_tracker
        ├── __init__.py # General application setup
        ├── forms.py    # User data to domain data mappers and validators
        ├── models.py   # Domain models used to define DB
@@ -59,7 +59,7 @@ Separting models, forms, and views modules from one single file to hold our doma
 from 
 
 ```
-├── flask-tracking.db
+├── site_tracker.db
 ├── requirements.txt
 ├── templates/
 └── tracking.py
