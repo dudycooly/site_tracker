@@ -2,66 +2,35 @@ Site Visit Tracking App
 ==============
 This application tracks visits to a particular web site register with this application.
 
-Used 2 tables to track visits of a given site
+In this, 2 tables (tracking_site, tracking_visit) are used to track visits to sites reigstered with this app
 
-* tracking_site
-  * id
-  * base_url
-  * visits (links to `tracking_visit` to track site visits)
 
-* tracking_visit
-  * id
-  * browser name
-  * date visited
-  * event on site during visit
-  * url or endpoint of the site visited
-  * ip_address of visitor
-  * site_id (links back to `tracking_site`)
-
-Used
+Packages Used
 ==============
-
 * Flask
 * WTF forms
-* SQLite DB with SQLAlchemy as ORM
+* SQLAlchemy
 
-
-Updates in this branch
+Concetps Explored
 ==============
+* REST API
+* Web Application (Unauthenticated Session)
+  * Using Flask Forms and Jinja templates
+  * Design Patterns: 
+     MVC
+     DAO
+     Mixins (CRUDMixmin, Flask UserMixin)
+* User Session Management
+* Salted/Hased password using backports.pbkdf2 HMAC
+* password property
 
-In this branch, monolithic version of the app (checkout branch monolithic) is improved by fixing dir structure as recommended by Flask
+* Database Management
+  * SQLite DB with SQLAlchemy as ORM
+  * Linking two tables (back referencing) via Foriegn Keys
+  * hybrid_property
 
-```
-app-name/       # Our working root
-    app-name/   # The application package (has to match working root to avoid confusing with publishing modules)
-        __init__.py
-    requirements.txt  # dependencies and other Meta data needed by our application resides at this level
-    README.md         
-```
+Updates to this branch
+==============
+As part of previous branch, the content of single monolithic file is refactored  in to appropriate modules/director as recommened by Flask
 
-Separting models, forms, and views modules from one single file to hold our domain models, our data translation layer, and our view code respectively to get the final form like this
-
-```    
-├──site_tracker
-   ├── site_tracker.db
-   ├── requirements.txt
-   ├── README.md
-   ├── config.py
-   ├── run.py
-   └── site_tracker
-       ├── __init__.py # General application setup
-       ├── forms.py    # User data to domain data mappers and validators
-       ├── models.py   # Domain models used to define DB
-       ├── templates/  # Holds html Jinja templates
-       └── views.py    # route/end point configuration or controlllers
-```
-
-from 
-
-```
-├── site_tracker.db
-├── requirements.txt
-├── templates/
-└── tracking.py
-```
-
+In this branch, User Accounts are setup to introduce authendticted session via an additional package - Users
