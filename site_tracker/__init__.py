@@ -1,7 +1,8 @@
 from flask import Flask
 
-from .models import db
+from .dao import db
 from tracker.views import tracker
+from user.views import users
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -14,4 +15,5 @@ def provide_constants():
 db.init_app(app)
 
 
-app.register_blueprint(tracker)
+app.register_blueprint(tracking)
+app.register_blueprint(users)
