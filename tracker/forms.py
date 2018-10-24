@@ -6,16 +6,16 @@ from .models import Site
 
 
 class SiteForm(Form):
-    base_url = fields.StringField()
+    base_url = fields.StringField(validators=[Required()])
 
 
 class VisitForm(Form):
     browser = fields.StringField()
-    date = fields.DateField()
+    date = fields.DateField(default=dt.now)
     event = fields.StringField()
-    url = fields.StringField()
-    ip_address = fields.StringField("IP Address")
-    site = QuerySelectField(query_factory=lambda: Site.query.all())
+    url = fields.StringField(validators=[Required()])
+    ip_address = fields.StringField()
+    site = QuerySelectField(validators=[Required()], query_factory=lambda: Site.query.all())
     """
     Using lambda here, because db is not bound to an application (in models.py),
     which would throw error to access Site.query when VisitForm is being constructed 

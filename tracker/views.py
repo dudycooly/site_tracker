@@ -4,10 +4,10 @@ from .forms import SiteForm, VisitForm
 from .models import db, query_to_list, Site, Visit
 
 
-tracking = Blueprint("tracking", __name__)
+tracker = Blueprint("tracker", __name__)
 
 
-@tracking.route("/")
+@tracker.route("/")
 def index():
     site_form = SiteForm()
     visit_form = VisitForm()
@@ -16,7 +16,7 @@ def index():
                            visit_form=visit_form)
 
 
-@tracking.route("/site", methods=("POST", ))
+@tracker.route("/site", methods=("POST",))
 def add_site():
     form = SiteForm()
     if form.validate_on_submit():
@@ -30,7 +30,7 @@ def add_site():
     return render_template("validation_error.html", form=form)
 
 
-@tracking.route("/site/<int:site_id>")
+@tracker.route("/site/<int:site_id>")
 def view_site_visits(site_id=None):
     site = Site.query.get_or_404(site_id)
     query = Visit.query.filter(Visit.site_id == site_id)
@@ -39,8 +39,8 @@ def view_site_visits(site_id=None):
     return render_template("data_list.html", data=data, title=title)
 
 
-@tracking.route("/visit", methods=("POST", ))
-@tracking.route("/site/<int:site_id>/visit", methods=("POST",))
+@tracker.route("/visit", methods=("POST",))
+@tracker.route("/site/<int:site_id>/visit", methods=("POST",))
 def add_visit(site_id=None):
     if site_id is None:
         # This is only used by the visit_form on the index page.
@@ -60,7 +60,7 @@ def add_visit(site_id=None):
     return render_template("validation_error.html", form=form)
 
 
-@tracking.route("/sites")
+@tracker.route("/sites")
 def view_sites():
     query = Site.query.filter(Site.id >= 0)
     data = query_to_list(query)
