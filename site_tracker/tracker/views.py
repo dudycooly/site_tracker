@@ -1,20 +1,18 @@
 from flask import Blueprint, flash, Markup, redirect, render_template, url_for
+from flask_login import current_user
 
 from .forms import SiteForm, VisitForm
-from .models import db, query_to_list, Site, Visit
-
+from .models import Site, Visit
+from .site_tracker.dao import query_to_list
 
 tracker = Blueprint("tracker", __name__)
 
 
 @tracker.route("/")
 def index():
-    site_form = SiteForm()
-    visit_form = VisitForm()
-    return render_template("index.html",
-                           site_form=site_form,
-                           visit_form=visit_form)
-
+    if not current_user.is_anonymous():
+        return redirect(url_for(".view_sites"))
+    return render_template("index.html")
 
 @tracker.route("/site", methods=("POST",))
 def add_site():

@@ -1,4 +1,4 @@
-from dao import db
+from site_tracker.dao import db
 
 
 class Site(db.Model):

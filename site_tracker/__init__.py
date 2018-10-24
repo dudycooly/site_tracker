@@ -1,7 +1,7 @@
 from flask import Flask
 
 from .models import db
-from .tracker.views import tracker
+from tracker.views import tracker
 
 app = Flask(__name__)
 app.config.from_object('config')

@@ -1,4 +1,4 @@
-from dao import db
+from site_tracker.dao import db
 
 from flask.ext.login import UserMixin
 
@@ -7,7 +7,7 @@ from random import SystemRandom
 from backports.pbkdf2 import pbkdf2_hmac, compare_digest
 from sqlalchemy.ext.hybrid import hybrid_property
 
-from flask_tracking.data import CRUDMixin
+from site_tracker.dao import CRUDMixin
 
 
 class User(UserMixin, CRUDMixin, db.Model):
