@@ -1,4 +1,4 @@
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
@@ -10,6 +10,7 @@ class CRUDMixin(object):
 
     @classmethod
     def create(cls, commit=True, **kwargs):
+        kwargs.pop("csrf_token", None)
         instance = cls(**kwargs)
         return instance.save(commit=commit)
 

@@ -1,14 +1,14 @@
-from flask.ext.wtf import Form
+from flask_wtf import Form, FlaskForm
 from sqlalchemy.orm.exc import MultipleResultsFound, NoResultFound
-from wtforms import fields
+from wtforms import StringField, PasswordField
 from wtforms.validators import Email, InputRequired, ValidationError
 
 from .models import User
 
 
 class LoginForm(Form):
-    email = fields.StringField(validators=[InputRequired(), Email()])
-    password = fields.StringField(validators=[InputRequired()])
+    email = StringField(validators=[InputRequired(), Email()])
+    password = StringField(validators=[InputRequired()])
 
     # WTForms supports "inline" validators
     # of the form `validate_[fieldname]`.
@@ -29,10 +29,10 @@ class LoginForm(Form):
         form.user = user
 
 
-class RegistrationForm(Form):
-    name = fields.StringField("Display Name")
-    email = fields.StringField(validators=[InputRequired(), Email()])
-    password = fields.StringField(validators=[InputRequired()])
+class RegistrationForm(FlaskForm):
+    name = StringField("Display Name")
+    email = StringField(validators=[InputRequired(), Email()])
+    password = PasswordField(validators=[InputRequired()])
 
     def validate_email(form, field):
         user = User.query.filter(User.email == field.data).first()

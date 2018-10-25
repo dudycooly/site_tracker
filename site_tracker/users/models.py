@@ -1,6 +1,6 @@
 from site_tracker.dao import db
 
-from flask.ext.login import UserMixin
+from flask_login import UserMixin
 
 from random import SystemRandom
 
@@ -10,7 +10,7 @@ from sqlalchemy.ext.hybrid import hybrid_property
 from site_tracker.dao import CRUDMixin
 
 
-class User(UserMixin, CRUDMixin, db.Model):
+class User(db.Model, UserMixin, CRUDMixin):
     __tablename__ = 'users_user'
 
     name = db.Column(db.String(50))
@@ -31,7 +31,8 @@ class User(UserMixin, CRUDMixin, db.Model):
     def password(self, value):
         # When a user is first created, give them a salt
         if self._salt is None:
-            self._salt = bytes(SystemRandom().getrandbits(128))
+            self._salt = SystemRandom().getrandbits(128).to_bytes(16, 'little')
+
         self._password = self._hash_password(value)
 
     def is_valid_password(self, password):

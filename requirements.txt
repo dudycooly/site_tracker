@@ -1,7 +1,7 @@
-flask>=0.12.3
-Flask-SQLAlchemy==1.0
-Flask-WTF==0.9.3
-Flask-Login==0.2.7
+Flask
+Flask-SQLAlchemy
+Flask-WTF
+Flask-Login
 
 # To hash password
-backports.pbkdf2==0.1
+backports.pbkdf2

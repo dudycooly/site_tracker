@@ -1,21 +1,23 @@
-from flask.ext.wtf import Form
+from datetime import datetime as dt
+from flask_wtf import Form
 from wtforms import fields
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
+from wtforms.validators import DataRequired
 
 from .models import Site
 
 
 class SiteForm(Form):
-    base_url = fields.StringField(validators=[Required()])
+    base_url = fields.StringField(validators=[DataRequired()])
 
 
 class VisitForm(Form):
     browser = fields.StringField()
     date = fields.DateField(default=dt.now)
     event = fields.StringField()
-    url = fields.StringField(validators=[Required()])
+    url = fields.StringField(validators=[DataRequired()])
     ip_address = fields.StringField()
-    site = QuerySelectField(validators=[Required()], query_factory=lambda: Site.query.all())
+    site = QuerySelectField(validators=[DataRequired()], query_factory=lambda: Site.query.all())
     """
     Using lambda here, because db is not bound to an application (in models.py),
     which would throw error to access Site.query when VisitForm is being constructed 
