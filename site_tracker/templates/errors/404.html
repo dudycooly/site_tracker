@@ -1,0 +1,6 @@
+{% extends "layout.html" %}
+{% block title %}Oops...we dont recognise the url (404){% endblock %}
+{% block content %}
+<p>Oops...we dont recognise the url endpoint.</p>
+<p>Go  <a href="{{ url_for("tracker.index") }}"> home</a>?</p>
+{% endblock content %}

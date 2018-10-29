@@ -23,9 +23,6 @@ def login():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        print("*"*80)
-        from pprint import pprint
-        pprint(form.data)
         user = User.create(**form.data)
         login_user(user)
         return redirect(url_for('tracker.index'))

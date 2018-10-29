@@ -1,5 +1,5 @@
 from site_tracker.dao import db
-
+from flask import current_app
 from flask_login import UserMixin
 
 from random import SystemRandom
@@ -52,7 +52,8 @@ class User(db.Model, UserMixin, CRUDMixin):
     def _hash_password(self, password):
         pwd = password.encode("utf-8")
         salt = bytes(self._salt)
-        buff = pbkdf2_hmac("sha512", pwd, salt, iterations=100000)
+        rounds = current_app.config.get("HASH_ROUNDS", 100000)
+        buff = pbkdf2_hmac("sha512", pwd, salt, iterations=rounds)
         return bytes(buff)
 
     def __repr__(self):
