@@ -31,7 +31,9 @@ class User(db.Model, UserMixin, CRUDMixin):
     def password(self, value):
         # When a user is first created, give them a salt
         if self._salt is None:
-            self._salt = SystemRandom().getrandbits(128).to_bytes(16, 'little')
+            self._salt = bytes(SystemRandom().getrandbits(128))
+            # To make this work in Python 3
+            # self._salt = SystemRandom().getrandbits(128).to_bytes(16, 'little')
 
         self._password = self._hash_password(value)
 

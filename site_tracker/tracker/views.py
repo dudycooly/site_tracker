@@ -1,6 +1,7 @@
 from flask import Blueprint, flash, Markup, redirect, render_template, url_for, abort, request, jsonify
 from flask_login import current_user, login_required
 
+from .geodata import get_geodata
 from .forms import SiteForm, VisitForm
 from .models import Site, Visit
 from site_tracker.dao import query_to_list
@@ -24,7 +25,7 @@ def view_site_visits(site_id=None):
 
     query = Visit.query.filter(Visit.site_id == site_id)
     data = query_to_list(query)
-    return render_template("tracking/site.html", visits=data, site=site)
+    return render_template("tracker/site.html", visits=data, site=site)
 
 
 @tracker.route("/sites/<int:site_id>/visit", methods=("GET", "POST"))
